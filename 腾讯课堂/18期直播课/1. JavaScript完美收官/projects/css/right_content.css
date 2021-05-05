@@ -1,0 +1,26 @@
+/* 学生列表区域 */
+/* 表格 */
+@import './table.css';
+/* 翻页按钮 */
+@import './turn_page.css';
+/* 编辑表单 (新增学生区域的表单样式也写在里面) */
+@import './modal.css';
+
+#rightContent {
+    position: absolute;
+    top: 70px;
+    left: 200px;
+
+    width: calc(100% - 200px);
+    height: calc(100% - 70px);
+    background-color: #eee;
+}
+
+/* 默认显示学生列表 隐藏新增学生 */
+#stu-list {
+    /* display: none; */
+}
+
+#stu-add {
+    display: none;
+}

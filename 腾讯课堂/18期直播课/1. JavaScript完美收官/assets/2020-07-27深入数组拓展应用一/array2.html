@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<script>
+		//判断数组是否为对称数组，对称数组形式如：[a, b, c, b, a]、[a, b, c, c, b, a]
+		//李经理、王中王、手拉手，面对面，上海自来水来自海上、嘴对嘴、撸啊撸
+		var arr1 = ['a', 'b', 'c', 'c', 'b', 'a'];
+		var arr2 = ['a', 'b', 'c', 'd', 'c', 'b', 'a'];
+		var arr3 = ['a', 'b', 'c', 'a', 'b', 'c'];
+
+		//普通方法
+		function symmetry(arr) {
+			var newArray = [];
+			for (var i = arr.length - 1; i >= 0; i--) {
+				newArray.push(arr[i]);
+			}
+
+			for (var i = 0; i < newArray.length; i++) {
+				if (newArray[i] != arr[i]) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+		//console.log(symmetry(arr1),symmetry(arr2),symmetry(arr3));	//true true false
+
+		//使用算法
+		function symmetry(arr) {
+			/* var start=0;
+			var end=arr.length-1; */
+
+			for (var i = 0; i < arr.length; i++) {
+				console.log(1);
+				//console.log(start,end);
+				/* if(arr[start]!=arr[end]){
+					return false;
+				}
+
+				start++;
+				end--; */
+
+				if (arr[i] != arr[arr.length - 1 - i]) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		function symmetry(arr) {
+			var start = 0;
+			var end = arr.length - 1;
+
+			for (var i = 0; i < arr.length/2; i++) {
+				console.log(1);
+				if (start >= end) {
+					break;
+				}
+
+				if (arr[start] != arr[end]) {
+					return false;
+				}
+
+				start++;
+				end--;
+			}
+
+			return true;
+		}
+
+		function symmetry(arr) {
+			var start = 0;
+			var end = arr.length - 1;
+
+			while (start < end) {
+				console.log(1);
+				if (arr[start] != arr[end]) {
+					return false;
+				}
+
+				start++;
+				end--;
+			}
+
+			return true;
+		}
+
+		console.log(symmetry(arr1), symmetry(arr2), symmetry(arr3))
+	</script>
+</body>
+<html>

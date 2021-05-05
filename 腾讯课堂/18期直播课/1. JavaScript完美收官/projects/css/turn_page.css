@@ -1,0 +1,42 @@
+/* 翻页按钮区域 */
+.turn-page {
+    display: flex;
+    /* 若用户信息条数 仅需要一页即可显示 那么 .turn-page 得 隐藏 */
+    /* display: none; */
+    /* align-items 是否设置 效果都一样 因为子元素的高度 正好撑满父级 */
+    /* align-items: center; */
+    justify-content: center;
+
+    margin-top: 10px;
+    height: 36px;
+}
+
+.turn-page button,
+.turn-page .page-num {
+    /* 文本居中显示 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+    margin-right: 6px;
+
+    height: 36px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.turn-page button {
+    width: 80px;
+}
+
+.turn-page .page-num {
+    width: 36px;
+}
+
+.turn-page button:hover,
+.turn-page .page-num:hover,
+.turn-page .page-num.active {
+    color: #fff;
+    background-color: #4e6ef2;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<script>
+		//4. 查询子串首次出现的位置，如：原串abccbaxzabc 子串为axz 结果为5
+		var str = 'abccbaxzabc';	//原串
+		var subStr = 'axz';		//子串
+		console.log(str.indexOf(subStr));	//5
+
+		function getIndex(str, sub) {
+			//...
+			for (var i = 0; i <= str.length - sub.length; i++) {
+				for (var j = 0; j < sub.length; j++) {
+					//j 	子串的索引
+					//j+i	原串的索引
+					if (sub[j] != str[j + i]) {
+						//这个条件成立说明对应索引的数据不相等
+						break;
+					}
+
+					//j=2
+					if (j == sub.length - 1) {
+						return i;
+					}
+				}
+			}
+
+			return -1;
+		}
+
+		console.log(getIndex(str, subStr));	//5
+
+
+		var str = 'abccbaxzabc';	//原串
+		var subStr = 'axz';		//子串
+		function getIndex(str, sub){
+			var start=0;
+			var end=str.length - sub.length;
+
+			while(start<=end){
+				if(str.slice(start,sub.length+start)===sub){
+					return start;
+				}
+
+				start++;
+			}
+
+			return -1;
+		}
+		console.log(getIndex(str, subStr));	//5
+	</script>
+</body>
+<html>

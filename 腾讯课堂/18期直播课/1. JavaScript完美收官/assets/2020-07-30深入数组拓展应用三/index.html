@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#box {
+			width: 300px;
+			height: 300px;
+			background: green;
+
+			/* position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -150px;
+			margin-top: -150px; */
+
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		.margin {
+			width: 200px;
+			height: 200px;
+			background: hotpink;
+			margin-right: auto;
+			margin-left: auto;
+
+			/*
+				auto: 可视区的宽-盒子的宽-marginLeft
+			 */
+
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.position {
+			border: 1px solid #000;
+			background: peru;
+
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+
+			width: 300px;
+			height: 300px;
+			margin: auto;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 
+		HTML:https://html.spec.whatwg.org/multipage/
+		CSS:https://www.w3.org/TR/CSS22/
+		JavaScript:https://www.ecma-international.org/publications/standards/Standard.htm
+
+		1、宽度为auto的绝对定位元素，通过left与right可以设置它的宽度
+		2、高度为auto的绝对定位元素，通过top与bottom可以设置它的高度
+
+	 -->
+	<div id="box"></div>
+	<div class="margin"></div>
+	<span class="position">陈学辉</span>
+
+	<ul id="list">
+		<li>a</li>
+		<li>a</li>
+		<li>a</li>
+		<li>a</li>
+	</ul>
+
+	<script>
+		console.log(
+			typeof null,
+			typeof undefined,
+			typeof function () { }
+		);
+
+
+		var a = 5;
+		function test() {
+			//var a=undefined;
+			a = 0;
+			alert(a);	//0
+			alert(this.a);	//5
+			var a;
+			alert(a);	//0
+		}
+		//test();
+		//new test();
+
+		/* var s=10;
+		var s;
+		console.log(s); */
+
+		var str = 'aaabbbcccdddeefggaa';	//abcdefga
+		var reg = /(\w)\1*/g;
+		// console.log(str.match(reg));
+		console.log(str.replace(reg, '$1'));
+
+
+		var str = '辉哥很帅';
+		str.length = 3;
+		console.log(str);
+
+		var arr = [1, 2, 3];
+		arr.length = 1;
+		console.log(arr);
+
+
+
+		//函数是否为独立调用，如果是独立调用的话函数里的this指向window，如果不是独立调用的话，函数里的this指向调用它的对象
+		var name = "222";
+		var a = {
+			name: "111",
+			say: function () {
+				console.log(this.name);
+			}
+		}
+		var fun = a.say;
+		fun();		//222
+		a.say();	//111
+
+
+
+		var b = {
+			name: "333",
+			say: function (fun) {
+				fun();
+			}
+		}
+		b.say(a.say);	//222
+		b.say = a.say;
+		b.say();	//333
+
+
+
+		var lis = document.querySelectorAll('#list li');
+		for (let i = 0; i < lis.length; i++) {
+			/* lis[i].addEventListener('click', function () {
+				console.log(i);
+			}); */
+			(function (i) {
+				lis[i].addEventListener('click', function () {
+					console.log(i);
+				});
+			})(i);
+		}
+	</script>
+</body>
+
+</html>
